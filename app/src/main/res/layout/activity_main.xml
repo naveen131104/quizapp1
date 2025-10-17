@@ -14,7 +14,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <!-- Logged Out Menu -->
     <LinearLayout
         android:id="@+id/loggedOutMenu"
         android:orientation="vertical"
@@ -35,7 +34,6 @@
             android:layout_marginTop="8dp"/>
     </LinearLayout>
 
-    <!-- Logged In Menu -->
     <LinearLayout
         android:id="@+id/loggedInMenu"
         android:orientation="vertical"

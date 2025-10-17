@@ -19,14 +19,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // users
         db.execSQL("CREATE TABLE users (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "username TEXT UNIQUE, " +
                 "password TEXT, " +
                 "email TEXT)");
 
-        // scores
         db.execSQL("CREATE TABLE scores (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "userId INTEGER, " +
@@ -35,7 +33,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 "timestamp DATETIME DEFAULT CURRENT_TIMESTAMP, " +
                 "FOREIGN KEY(userId) REFERENCES users(id))");
 
-        // questions
         db.execSQL("CREATE TABLE questions (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "category TEXT, " +
@@ -57,9 +54,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // ---------- sample questions (10 each) ----------
     private void insertSampleQuestions(SQLiteDatabase db) {
-        // GENERAL (10)
         addQuestion(db, "General","What is the capital of India?","Delhi","Mumbai","Kolkata","Chennai","Delhi");
         addQuestion(db, "General","Which festival is called the Festival of Lights?","Diwali","Holi","Eid","Christmas","Diwali");
         addQuestion(db, "General","Largest ocean on Earth?","Atlantic","Indian","Pacific","Arctic","Pacific");
@@ -71,7 +66,6 @@ public class DBHelper extends SQLiteOpenHelper {
         addQuestion(db, "General","Who is called the Father of the Nation of India?","Gandhi","Nehru","Tagore","Ambedkar","Gandhi");
         addQuestion(db, "General","What is H2O commonly called?","Oxygen","Water","Hydrogen","Salt","Water");
 
-        // SPORTS (10)
         addQuestion(db, "Sports","How many players in a football team on the field?","9","10","11","12","11");
         addQuestion(db, "Sports","How many rings in the Olympic logo?","4","5","6","7","5");
         addQuestion(db, "Sports","T20 cricket overs per side?","10","20","30","50","20");
@@ -83,7 +77,6 @@ public class DBHelper extends SQLiteOpenHelper {
         addQuestion(db, "Sports","Which sport uses a shuttlecock?","Tennis","Badminton","Cricket","Squash","Badminton");
         addQuestion(db, "Sports","Who is often called 'God of Cricket'?","Dhoni","Kohli","Tendulkar","Dravid","Tendulkar");
 
-        // SCIENCE (10)
         addQuestion(db, "Science","Which planet is called the Red Planet?","Earth","Mars","Venus","Jupiter","Mars");
         addQuestion(db, "Science","DNA stands for?","Deoxyribonucleic acid","Ribonucleic acid","Deoxyribonucleotide","None","Deoxyribonucleic acid");
         addQuestion(db, "Science","Approx speed of light?","3x10^6 m/s","3x10^8 m/s","3000 m/s","300 m/s","3x10^8 m/s");
@@ -107,8 +100,6 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("answer", ans);
         db.insert("questions", null, cv);
     }
-
-    // ---------- USER METHODS ----------
     public boolean registerUser(String username, String password, String email) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -143,7 +134,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return -1;
     }
 
-    // ---------- SCORE METHODS ----------
     public void saveScore(int userId, String category, int score) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -153,7 +143,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.insert("scores", null, cv);
     }
 
-    // leaderboard as simple list "username - score"
     public List<String> getLeaderboardList() {
         SQLiteDatabase db = getReadableDatabase();
         List<String> out = new ArrayList<>();
@@ -169,7 +158,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return out;
     }
 
-    // ---------- QUESTION METHODS ----------
     public List<Question> getQuestionsByCategory(String category) {
         List<Question> out = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();

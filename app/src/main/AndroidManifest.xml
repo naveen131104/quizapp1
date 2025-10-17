@@ -49,7 +49,6 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
-        <!-- ✅ Missing CategoryActivity added -->
         <activity
             android:name=".CategoryActivity"
             android:exported="false"

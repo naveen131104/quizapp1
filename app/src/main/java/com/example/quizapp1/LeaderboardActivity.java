@@ -27,7 +27,6 @@ public class LeaderboardActivity extends AppCompatActivity {
 
         load();
 
-        // ✅ Navigate back to Category/Menu activity
         btnBackToCategory.setOnClickListener(v -> {
             Intent intent = new Intent(LeaderboardActivity.this, MainActivity.class);
             startActivity(intent);

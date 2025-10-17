@@ -66,12 +66,10 @@ public class QuizActivity extends AppCompatActivity {
             if (current < questions.size()) {
                 showQuestion();
             } else {
-                // save score if user logged in
                 SharedPreferences sp = getSharedPreferences(LoginActivity.PREFS, MODE_PRIVATE);
                 int userId = sp.getInt(LoginActivity.KEY_USER_ID, -1);
                 if (userId != -1) db.saveScore(userId, category, score);
 
-                // Show toast and return to MainActivity
                 Toast.makeText(QuizActivity.this, "Your Score: " + score + " / " + questions.size(), Toast.LENGTH_LONG).show();
                 Intent i = new Intent(QuizActivity.this, MainActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
