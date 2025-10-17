@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:padding="20dp"
+        android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:id="@+id/txtCategory" android:text="Category:" android:textSize="18sp" android:layout_marginBottom="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/txtQuestion" android:text="Question" android:textSize="20sp" android:layout_marginBottom="12dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        <RadioGroup android:id="@+id/optionsGroup" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <RadioButton android:id="@+id/opt1" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <RadioButton android:id="@+id/opt2" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <RadioButton android:id="@+id/opt3" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <RadioButton android:id="@+id/opt4" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        </RadioGroup>
+        <Button android:id="@+id/btnNext" android:text="Next" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp"/>
+    </LinearLayout>
+</ScrollView>
